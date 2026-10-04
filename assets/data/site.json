@@ -1,0 +1,44 @@
+{
+  "name": "Bitácora Stack",
+  "shortName": "Bitácora Stack",
+  "tagline": "Tecnología explicada desde la práctica.",
+  "description": "Programación, desarrollo, bases de datos, redes e ingeniería de software explicados desde la experiencia universitaria.",
+  "language": "es-MX",
+  "siteUrl": null,
+  "author": {
+    "name": "Christian Alfredo Rincon De La Cruz",
+    "role": "Estudiante de Ingeniería en Tecnologías de la Información e Innovación Digital"
+  },
+  "categories": [
+    {
+      "slug": "programacion",
+      "name": "Programación",
+      "description": "Fundamentos de programación, algoritmos, programación orientada a objetos y estructuras de datos."
+    },
+    {
+      "slug": "desarrollo",
+      "name": "Desarrollo Web y Móvil",
+      "description": "HTML, CSS, JavaScript, Kotlin y desarrollo de aplicaciones."
+    },
+    {
+      "slug": "bases-datos",
+      "name": "Bases de Datos",
+      "description": "SQL, modelado, normalización y diseño de bases de datos."
+    },
+    {
+      "slug": "redes-sistemas",
+      "name": "Redes y Sistemas",
+      "description": "Redes, TCP/IP, Linux, protocolos y sistemas operativos."
+    },
+    {
+      "slug": "ingenieria-software",
+      "name": "Ingeniería de Software",
+      "description": "UML, requisitos, calidad, análisis y diseño de software."
+    },
+    {
+      "slug": "matematicas",
+      "name": "Matemáticas para TI",
+      "description": "Lógica, probabilidad, estadística y cálculo aplicado."
+    }
+  ]
+}

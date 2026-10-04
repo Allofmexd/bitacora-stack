@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es-MX" data-site-root="../../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flexbox CSS explicado con ejemplos | Bitácora Stack</title>
+<meta name="description" content="Aprende Flexbox con ejes, alineación, gap, wrap y flex. Construye tarjetas adaptables con HTML y CSS y entiende cuándo combinar este modelo con Grid.">
+<meta name="theme-color" content="#eae8ff">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/layout.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="../../assets/css/article.css">
+<link rel="stylesheet" href="../../assets/css/pages.css">
+<link rel="stylesheet" href="../../assets/css/responsive.css">
+<script type="module" src="../../assets/js/main.js"></script>
+
+<meta property="og:title" content="Flexbox CSS explicado con ejemplos">
+<meta property="og:description" content="Aprende Flexbox con ejes, alineación, gap, wrap y flex. Construye tarjetas adaptables con HTML y CSS y entiende cuándo combinar este modelo con Grid.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Flexbox CSS explicado con ejemplos",
+  "description": "Aprende Flexbox con ejes, alineación, gap, wrap y flex. Construye tarjetas adaptables con HTML y CSS y entiende cuándo combinar este modelo con Grid.",
+  "author": {
+    "@type": "Person",
+    "name": "Christian Alfredo Rincon De La Cruz"
+  },
+  "datePublished": "2026-10-04",
+  "dateModified": "2026-10-04",
+  "inLanguage": "es-MX"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header"><div class="container navbar" data-navigation><a class="brand" href="../../" aria-label="Bitácora Stack, inicio"><span class="stack-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span>BITÁCORA<small>STACK</small></span></a>
+<button class="button button--ghost menu-toggle" type="button" aria-expanded="false" aria-controls="navegacion">Menú</button>
+<nav class="nav-links" id="navegacion" aria-label="Navegación principal"><a href="../../articulos/">Artículos</a><a href="../../guias/">Guías</a><a href="../../proyectos/">Proyectos</a><a href="../../acerca/">Acerca</a><button class="button button--ghost" type="button" data-search-open hidden>Buscar <span aria-hidden="true">↗</span></button></nav></div></header>
+<div class="reading-progress" data-reading-progress aria-hidden="true" hidden><span></span></div>
+<main id="contenido" tabindex="-1"><div class="container"><article data-article-id="web-flexbox-css">
+<header class="article-header"><nav class="breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="../../">Inicio</a></li><li><a href="../">Desarrollo Web y Móvil</a></li><li aria-current="page">Flexbox CSS explicado con ejemplos</li></ol></nav><a class="badge" href="../">Desarrollo Web y Móvil</a><h1>Flexbox CSS explicado con ejemplos</h1><p class="intro">Aprende Flexbox con ejes, alineación, gap, wrap y flex. Construye tarjetas adaptables con HTML y CSS y entiende cuándo combinar este modelo con Grid.</p><div class="article-meta"><span>Christian Alfredo Rincon De La Cruz</span><span><time datetime="2026-10-04">4 de octubre de 2026</time></span><span><span data-reading-time>8</span> min de lectura</span><span class="badge">Principiante</span></div></header><div class="article-cover cover-flex" aria-hidden="true"><span class="cover-label">Un eje. Espacio que se reparte.</span><div class="flex-axis">Eje principal →</div><div class="flex-cover-items"><strong>01</strong><strong>02</strong><strong>03</strong></div><span class="flex-cross">↕ Eje transversal · gap entre items</span></div>
+<div class="article-layout"><aside class="toc-region"><details class="article-toc" open><summary>En este artículo</summary><nav aria-label="Tabla de contenidos"><ol><li><a href="#modelo-flexbox">Qué resuelve Flexbox y dónde se activa</a></li><li><a href="#ejes-direccion">Eje principal y transversal: empieza por la dirección</a></li><li><a href="#alinear-elementos">justify-content y align-items: alinear en cada eje</a></li><li><a href="#separacion-salto">gap y flex-wrap: separar y permitir nuevas líneas</a></li><li><a href="#flex-tamano">Cómo leer flex: crecimiento, reducción y base</a></li><li><a href="#ejemplo-tarjetas">Ejemplo completo: tarjetas que se adaptan</a></li><li><a href="#flexbox-grid">Cuándo elegir Flexbox y cuándo considerar Grid</a></li><li><a href="#ejercicio-flexbox">Pruébalo tú mismo</a></li><li><a href="#resumen-flexbox">Lo que debes recordar</a></li></ol></nav></details></aside><div class="article-prose" data-reading-content><section aria-labelledby="modelo-flexbox"><h2 id="modelo-flexbox">Qué resuelve Flexbox y dónde se activa</h2><p>Quieres colocar tres tarjetas una junto a otra, separarlas y permitir que bajen de línea cuando la pantalla se estrecha. Podrías calcular posiciones manualmente, pero cambiaría todo al añadir una tarjeta o un texto más largo. Flexbox permite describir cómo se distribuyen elementos dentro de un contenedor.</p><p>Es un modelo de layout orientado a un eje principal. Funciona bien para menús, grupos de botones y filas o columnas de componentes. No requiere JavaScript: el navegador recalcula la distribución cuando cambia el espacio disponible. Si CSS aún no aparece en tu página, revisa primero <a href="../conectar-html-css-javascript/">cómo enlazar una hoja de estilos desde HTML</a>.</p><p>Se activa con <code>display: flex</code> en el padre. Sus hijos directos pasan a ser flex items; un nieto dentro de una tarjeta no se convierte automáticamente en item del contenedor exterior. Ese detalle explica muchos resultados inesperados cuando una regla parece afectar al grupo equivocado.</p><figure class="code-block"><figcaption class="code-toolbar"><span>CSS</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-contenedor-flex" aria-label="Copiar código de CSS" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código CSS"><code id="codigo-contenedor-flex">.cards {
+  display: flex;
+}</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><aside class="callout callout--idea" aria-label="Idea clave"><p class="callout-label">Idea clave</p><p>El contenedor decide dirección, separación y alineación del grupo. Cada item puede decidir cómo crecer o encogerse. Antes de cambiar propiedades, identifica a qué nivel pertenece el elemento.</p></aside></section><section aria-labelledby="ejes-direccion"><h2 id="ejes-direccion">Eje principal y transversal: empieza por la dirección</h2><p>El eje principal sigue la dirección de <code>flex-direction</code>; el transversal lo cruza. Con <code>row</code>, en una página de escritura horizontal de izquierda a derecha como esta, los items avanzan horizontalmente. Con <code>column</code>, avanzan verticalmente y el eje transversal es horizontal.</p><p>Por eso no conviene memorizar que justify-content siempre es horizontal. Su eje depende de la dirección elegida. Cambiar de row a column cambia el eje principal, aunque mantengas las mismas propiedades de alineación. Describe primero el recorrido de los items y después el efecto que buscas.</p><figure class="code-block"><figcaption class="code-toolbar"><span>CSS</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-direccion-flex" aria-label="Copiar código de CSS" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código CSS"><code id="codigo-direccion-flex">.cards {
+  display: flex;
+  flex-direction: column;
+}</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p>Las variantes <code>row-reverse</code> y <code>column-reverse</code> invierten el recorrido visual. No reescriben el orden del documento ni necesariamente el recorrido del teclado. Evita usarlas para arreglar un HTML ordenado incorrectamente: contenido, lectura y navegación deben conservar una secuencia comprensible.</p><p>En estos ejemplos utilizaremos row, el valor inicial, y escritura horizontal. Si trabajas con otros modos de escritura, comprueba el sentido de los ejes en ese contexto. El modelo se expresa mediante direcciones de flujo, no mediante coordenadas fijas de tu monitor.</p></section><section aria-labelledby="alinear-elementos"><h2 id="alinear-elementos">justify-content y align-items: alinear en cada eje</h2><p><code>justify-content</code> distribuye el espacio libre a lo largo del eje principal. Con <code>center</code> centra el grupo; <code>space-between</code> reparte espacio entre items y mantiene los extremos del grupo al inicio y al final. Si los items ya consumen todo el espacio, no queda margen libre que repartir.</p><p><code>align-items</code> controla la alineación de los items sobre el eje transversal dentro de su línea. <code>center</code> centra en ese eje; <code>flex-start</code> los coloca al inicio. El comportamiento inicial stretch puede estirarlos en el eje transversal cuando su tamaño en ese eje es automático y las restricciones lo permiten.</p><figure class="code-block"><figcaption class="code-toolbar"><span>CSS</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-alineacion-flex" aria-label="Copiar código de CSS" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código CSS"><code id="codigo-alineacion-flex">.barra {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p>Una barra con un título y un botón suele necesitar alineación transversal porque ambos tienen alturas distintas. Coloca las reglas en la barra, no en el título esperando que alineen a su hermano. Para cambiar solo un item puedes utilizar <code>align-self</code>, que ajusta su alineación transversal.</p><p>Centra con intención: en una fila sin altura adicional, quizá no notes un cambio vertical. No significa que la regla haya fallado; puede que el contenedor no tenga espacio visible en ese eje. La <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Aligning_items">guía de alineación de MDN</a> incluye casos para observar esa diferencia.</p></section><section aria-labelledby="separacion-salto"><h2 id="separacion-salto">gap y flex-wrap: separar y permitir nuevas líneas</h2><p><code>gap</code> crea separación entre los items y, cuando existen varias líneas, entre esas líneas. Es una forma directa de evitar márgenes individuales que deben corregirse en el primer o último elemento. No añade automáticamente espacio alrededor del contenedor; para ese borde exterior utiliza padding.</p><p>El valor inicial de <code>flex-wrap</code> es <code>nowrap</code>. Los items intentan permanecer en una línea y pueden encogerse si sus reglas lo permiten. Con <code>wrap</code>, los que no caben pasan a otra línea. Así una fila de tarjetas puede adaptarse sin necesitar un punto de corte para cada cantidad de tarjetas.</p><figure class="code-block"><figcaption class="code-toolbar"><span>CSS</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-wrap-flex" aria-label="Copiar código de CSS" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código CSS"><code id="codigo-wrap-flex">.cards {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p>Cada línea reparte su espacio de manera independiente. No esperes que todas las columnas de distintas líneas queden alineadas como una cuadrícula. También distingue align-items de <code>align-content</code>: esta última distribuye las líneas sobre el eje transversal cuando hay varias y espacio disponible para ello.</p><p>Prueba a reducir el ancho del navegador lentamente. Puedes ver que primero cambia el ancho de las tarjetas y después una baja a la siguiente línea. El momento depende del espacio, las bases de los items y el gap; no existe una cantidad universal de píxeles que funcione para cualquier contenido.</p></section><section aria-labelledby="flex-tamano"><h2 id="flex-tamano">Cómo leer flex: crecimiento, reducción y base</h2><p>La propiedad abreviada <code>flex</code> se coloca en los items. En la forma de tres valores, <code>flex: 1 1 200px</code> representa <code>flex-grow: 1</code>, <code>flex-shrink: 1</code> y <code>flex-basis: 200px</code>. La base es el tamaño inicial de referencia sobre el eje principal antes de repartir espacio.</p><p>Grow expresa cuánto participa un item en el reparto del espacio positivo. Si todos tienen factor uno, comparten ese espacio con el mismo peso. No significa que cada tarjeta deba medir un píxel ni que un factor dos garantice el doble del ancho final: el tamaño de partida y las restricciones también cuentan.</p><p>Shrink permite reducir tamaños cuando falta espacio. El reparto de reducción considera el factor y la base del item; no consiste en restar la misma cantidad a todos. Un factor cero impide esa reducción flexible. Por su parte, una base de 200px no es una promesa de ancho final constante.</p><figure class="code-block"><figcaption class="code-toolbar"><span>CSS</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-tamano-flex" aria-label="Copiar código de CSS" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código CSS"><code id="codigo-tamano-flex">.card {
+  flex: 1 1 200px;
+  min-width: 0;
+}</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p>Los items pueden mantener un mínimo automático ligado al contenido. <code>min-width: 0</code> permite reducirlos más en una fila cuando eso es necesario. Para textos muy largos, añade también una estrategia de salto. No ocultes todo con overflow solo para hacer desaparecer una barra de desplazamiento.</p><p>La <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex">referencia de flex</a> documenta las formas abreviadas. Al empezar, escribe los tres valores para poder explicar cada uno antes de usar atajos más compactos.</p></section><section aria-labelledby="ejemplo-tarjetas"><h2 id="ejemplo-tarjetas">Ejemplo completo: tarjetas que se adaptan</h2><p>Crea index.html y styles.css en la misma carpeta. Copia el primer bloque en el documento y el segundo en la hoja de estilos. No necesitas script ni instalación adicional. Abre el HTML para observar una distribución que responde al espacio disponible.</p><figure class="code-block"><figcaption class="code-toolbar"><span>HTML · index.html</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-flex-html" aria-label="Copiar código de index.html" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código HTML · index.html"><code id="codigo-flex-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es-MX&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Tarjetas con Flexbox&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main&gt;
+    &lt;h1&gt;Una ruta de práctica&lt;/h1&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      &lt;article class=&quot;card&quot;&gt;
+        &lt;h2&gt;Estructura&lt;/h2&gt;
+        &lt;p&gt;Organiza una página y sus encabezados.&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;card&quot;&gt;
+        &lt;h2&gt;Presentación&lt;/h2&gt;
+        &lt;p&gt;Distribuye tarjetas con CSS y prueba varios anchos.&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;card&quot;&gt;
+        &lt;h2&gt;Comprobación&lt;/h2&gt;
+        &lt;p&gt;Revisa que el contenido siga siendo legible.&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><figure class="code-block"><figcaption class="code-toolbar"><span>CSS · styles.css</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-flex-css" aria-label="Copiar código de styles.css" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código CSS · styles.css"><code id="codigo-flex-css">* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: sans-serif;
+  color: #2d3142;
+  background: #eae8ff;
+}
+main { max-width: 960px; margin: 0 auto; }
+.cards {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card {
+  flex: 1 1 200px;
+  min-width: 0;
+  padding: 24px;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow-wrap: anywhere;
+}
+.card h2 { margin-top: 0; }</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p>El div cards es el contenedor de distribución. Cada article presenta una unidad breve que tiene sentido por separado. Las reglas de flex van en las tarjetas porque son los hijos directos. El contenido interior sigue el flujo normal; no estamos convirtiendo todos los párrafos en items del grupo principal.</p><p>Box-sizing incluye el padding en el cálculo del tamaño de cada caja. El ancho máximo del main evita que la fila se extienda indefinidamente. El fondo blanco y el espacio interior permiten reconocer los límites de cada item sin mezclar separación externa con padding.</p><p>Con grow activado, las tarjetas ocupan el espacio sobrante de cada línea. Por eso justify-content center puede no producir un cambio visible aquí: el crecimiento ya usa ese espacio. Para observar el centrado de un grupo más pequeño, prueba temporalmente <code>flex: 0 1 200px</code>.</p></section><section aria-labelledby="flexbox-grid"><h2 id="flexbox-grid">Cuándo elegir Flexbox y cuándo considerar Grid</h2><p>Piensa en Flexbox cuando la prioridad sea distribuir un grupo sobre un eje: una barra de herramientas, botones de un formulario o una fila adaptable. Piensa en Grid cuando necesites controlar relaciones entre filas y columnas de una cuadrícula. La elección depende de las relaciones que quieres mantener.</p><p>Ambos pueden complementarse. Una página puede usar Grid para su estructura principal y Flexbox dentro de una tarjeta para separar título y acciones. No necesitas escoger un ganador para todo el proyecto. Tampoco una fila con wrap se convierte en una cuadrícula bidimensional solo porque aparezcan varias líneas.</p><aside class="callout callout--error" aria-label="Error común"><p class="callout-label">Error común</p><p>Aplicar justify-content al hijo, olvidar display: flex en el padre o asumir que center siempre significa centrar horizontalmente. Revisa el contenedor y su dirección antes de modificar tamaños para compensar.</p></aside></section><section aria-labelledby="ejercicio-flexbox"><h2 id="ejercicio-flexbox">Pruébalo tú mismo</h2><aside class="callout callout--exercise" aria-label="Pruébalo tú mismo"><p class="callout-label">Pruébalo tú mismo</p><p>Añade una cuarta tarjeta con un texto más largo. Prueba anchos de 320px y 1024px. Cambia la dirección a column y predice qué eje controla cada alineación. Después vuelve a row y compara flex: 1 1 200px con flex: 0 1 200px.</p></aside><p>Comprueba que no hay desplazamiento horizontal en toda la página y que el texto no se corta. Usa las herramientas del navegador para inspeccionar el tamaño final de cada caja. Cambia una sola propiedad por vez y explica el resultado antes de seguir.</p></section><section aria-labelledby="resumen-flexbox"><h2 id="resumen-flexbox">Lo que debes recordar</h2><aside class="callout callout--remember" aria-label="Lo que debes recordar"><p class="callout-label">Lo que debes recordar</p><p>Flexbox se activa en el padre y organiza sus hijos directos. Flex-direction define el eje principal; justify-content actúa en ese eje y align-items en el transversal. Gap separa, wrap permite nuevas líneas y flex regula crecimiento, reducción y base en cada item.</p></aside><p>La adaptación funciona mejor cuando describes reglas flexibles y verificas contenido real. Si necesitas alinear filas y columnas como un conjunto, considera Grid; puedes conservar Flexbox en los componentes que se beneficien de él.</p></section></div></div>
+<footer class="article-end"><h2>Seguir aprendiendo</h2><p>Explora los <a href="../">artículos de Desarrollo Web y Móvil</a> para seguir practicando.</p><div class="share-actions" data-share-controls hidden><button class="button button--secondary" type="button" data-share>Compartir artículo</button><button class="button button--ghost" type="button" data-copy-link>Copiar enlace</button><p data-share-status role="status"></p></div><h3>Referencias técnicas</h3><p>Consulta el <a href="https://www.w3.org/TR/css-flexbox-1/">modelo Flexbox de W3C</a> y los <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts">conceptos básicos de Flexbox en MDN</a>.</p></footer></article><section class="section" data-related-articles hidden aria-labelledby="relacionados-titulo"><h2 id="relacionados-titulo">Artículos relacionados</h2><div class="grid" data-related-results></div></section></div></main>
+<footer class="site-footer"><div class="container footer-layout"><div><a class="brand" href="../../">Bitácora Stack</a><p>Tecnología explicada desde la práctica.</p><small>© 2026 Christian Alfredo Rincon De La Cruz</small></div><nav class="footer-nav" aria-label="Navegación del pie"><a href="../../articulos/">Artículos</a><a href="../../guias/">Guías</a><a href="../../proyectos/">Proyectos</a><a href="../../acerca/">Acerca</a></nav></div></footer>
+<dialog class="search-dialog" id="busqueda-global" aria-labelledby="busqueda-titulo"><div class="dialog-heading"><h2 id="busqueda-titulo">¿Qué quieres aprender?</h2><button class="button button--ghost" type="button" data-search-close>Cerrar</button></div><label class="field-label" for="busqueda-input">Buscar artículos</label><input id="busqueda-input" type="search" placeholder="Tema, lenguaje o concepto" autocomplete="off"><p class="result-count" data-search-count role="status" aria-live="polite"></p><div data-search-results class="grid"></div></dialog>
+</body></html>

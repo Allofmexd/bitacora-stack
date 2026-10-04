@@ -1,0 +1,15 @@
+:root {
+  --color-bg: #eae8ff; --color-surface: #d8d5db; --color-muted: #adacb5;
+  --color-primary: #2d3142; --color-accent: #b0d7ff; --color-white: #ffffff;
+  --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px;
+  --container: 1200px; --article-width: 760px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px; --space-24: 96px;
+  --text-xs: .75rem; --text-sm: .875rem; --text-base: 1rem; --text-lg: 1.125rem;
+  --text-xl: 1.25rem; --text-2xl: 1.5rem; --text-3xl: 2rem; --text-4xl: 2.75rem;
+  --text-hero: clamp(2.5rem, 6vw, 4.5rem);
+  --font-body: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-code: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --transition: 200ms ease; --shadow: 0 8px 28px rgb(45 49 66 / .06);
+  --border: 1px solid rgb(45 49 66 / .17); --gutter: clamp(20px, 4vw, 48px);
+}

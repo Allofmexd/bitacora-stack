@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es-MX" data-site-root="../../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo conectar HTML, CSS y JavaScript paso a paso | Bitácora Stack</title>
+<meta name="description" content="Aprende a conectar HTML, CSS y JavaScript con rutas relativas, defer y un ejemplo funcional. Organiza tus archivos y comprueba errores frecuentes paso a paso.">
+<meta name="theme-color" content="#eae8ff">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/layout.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="../../assets/css/article.css">
+<link rel="stylesheet" href="../../assets/css/pages.css">
+<link rel="stylesheet" href="../../assets/css/responsive.css">
+<script type="module" src="../../assets/js/main.js"></script>
+
+<meta property="og:title" content="Cómo conectar HTML, CSS y JavaScript paso a paso">
+<meta property="og:description" content="Aprende a conectar HTML, CSS y JavaScript con rutas relativas, defer y un ejemplo funcional. Organiza tus archivos y comprueba errores frecuentes paso a paso.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cómo conectar HTML, CSS y JavaScript paso a paso",
+  "description": "Aprende a conectar HTML, CSS y JavaScript con rutas relativas, defer y un ejemplo funcional. Organiza tus archivos y comprueba errores frecuentes paso a paso.",
+  "author": {
+    "@type": "Person",
+    "name": "Christian Alfredo Rincon De La Cruz"
+  },
+  "datePublished": "2026-10-04",
+  "dateModified": "2026-10-04",
+  "inLanguage": "es-MX"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header"><div class="container navbar" data-navigation><a class="brand" href="../../" aria-label="Bitácora Stack, inicio"><span class="stack-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span>BITÁCORA<small>STACK</small></span></a>
+<button class="button button--ghost menu-toggle" type="button" aria-expanded="false" aria-controls="navegacion">Menú</button>
+<nav class="nav-links" id="navegacion" aria-label="Navegación principal"><a href="../../articulos/">Artículos</a><a href="../../guias/">Guías</a><a href="../../proyectos/">Proyectos</a><a href="../../acerca/">Acerca</a><button class="button button--ghost" type="button" data-search-open hidden>Buscar <span aria-hidden="true">↗</span></button></nav></div></header>
+<div class="reading-progress" data-reading-progress aria-hidden="true" hidden><span></span></div>
+<main id="contenido" tabindex="-1"><div class="container">
+<article data-article-id="web-conectar-html-css-javascript">
+<header class="article-header">
+<nav class="breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="../../">Inicio</a></li><li><a href="../">Desarrollo Web y Móvil</a></li><li aria-current="page">Cómo conectar HTML, CSS y JavaScript</li></ol></nav>
+<a class="badge" href="../">Desarrollo Web y Móvil</a>
+<h1>Cómo conectar HTML, CSS y JavaScript paso a paso</h1><p class="intro">Aprende a conectar HTML, CSS y JavaScript con rutas relativas, defer y un ejemplo funcional. Organiza tus archivos y comprueba errores frecuentes paso a paso.</p>
+<div class="article-meta"><span>Christian Alfredo Rincon De La Cruz</span><span><time datetime="2026-10-04">4 de octubre de 2026</time></span><span><span data-reading-time>8</span> min de lectura</span><span class="badge">Principiante</span></div>
+</header>
+<div class="article-cover" aria-hidden="true"><span class="cover-label">Tres archivos. Una página.</span><div class="cover-blocks"><div><strong>HTML</strong><span>Estructura</span></div><span class="cover-connector">↔</span><div><strong>CSS</strong><span>Presentación</span></div><span class="cover-connector">↔</span><div><strong>JS</strong><span>Comportamiento</span></div></div></div>
+<div class="article-layout"><aside class="toc-region"><details class="article-toc" open><summary>En este artículo</summary><nav aria-label="Tabla de contenidos"><ol><li><a href="#que-hace-cada-tecnologia">Qué hace cada tecnología</a></li><li><a href="#estructura-del-proyecto">Estructura básica del proyecto</a></li><li><a href="#conectar-css">Cómo conectar CSS con HTML</a></li><li><a href="#conectar-javascript">Cómo conectar JavaScript con HTML</a></li><li><a href="#ejemplo-completo">Ejemplo completo: un botón que saluda</a></li><li><a href="#comprobar-conexion">Cómo comprobar que todo funciona</a></li><li><a href="#errores-comunes">Errores comunes y cómo encontrarlos</a></li><li><a href="#pruebalo-tu-mismo">Pruébalo tú mismo</a></li><li><a href="#lo-que-debes-recordar">Lo que debes recordar</a></li></ol></nav></details></aside>
+<div class="article-prose" data-reading-content><section aria-labelledby="que-hace-cada-tecnologia"><h2 id="que-hace-cada-tecnologia">Qué hace cada tecnología</h2><p>Si estás empezando, es normal preguntarte si HTML, CSS y JavaScript son tres formas distintas de hacer lo mismo. En realidad, cada uno resuelve una parte de la página. Separarlos ayuda a encontrar errores y cambiar una cosa sin rehacer todo el proyecto.</p>
+<h3>HTML: la estructura y el significado</h3><p>HTML organiza el contenido: títulos, párrafos, enlaces, imágenes y botones. Una etiqueta como <code>&lt;h1&gt;</code> identifica el encabezado principal; <code>&lt;button&gt;</code> crea un botón. El navegador puede mostrar esta estructura aunque todavía no hayas añadido estilos o programación.</p><p>Usar la etiqueta adecuada también ayuda a quienes navegan con teclado o lector de pantalla. Un botón real ya tiene comportamientos que no obtienes simplemente dibujando un rectángulo. Profundiza en <a href="../html-semantico/">HTML semántico y la elección de etiquetas según su función</a>.</p>
+<h3>CSS: la presentación</h3><p>CSS indica cómo se ve el contenido: colores, tamaños, separación y distribución. Por ejemplo, una regla para <code>body</code> puede cambiar el fondo de toda la página. CSS selecciona elementos del HTML y les aplica propiedades; no necesita JavaScript para funcionar. Para distribuir grupos de elementos, continúa con <a href="../flexbox-css/">Flexbox CSS y sus ejemplos de tarjetas adaptables</a>.</p>
+<h3>JavaScript: el comportamiento</h3><p>JavaScript permite responder a acciones. En este ejercicio detectará un clic y cambiará un mensaje. No construirá toda la página ni decidirá sus colores: añadirá una interacción a una estructura que ya existe. El <a href="../dom-javascript/">DOM de JavaScript permite consultar y modificar esa estructura en memoria</a>.</p><aside class="callout callout--idea" aria-label="Idea clave"><p class="callout-label">Idea clave</p><p>HTML define la estructura, CSS controla la presentación y JavaScript añade comportamiento. Si falla una conexión, revisa esa parte sin asumir que las otras dos también están mal.</p></aside></section>
+<section aria-labelledby="estructura-del-proyecto"><h2 id="estructura-del-proyecto">Estructura básica del proyecto</h2><p>Crea una carpeta llamada <code>mi-proyecto</code> y, dentro, tres archivos. Puedes usar un editor de texto o código; lo importante es guardarlos con los nombres y extensiones correctos.</p><figure class="code-block"><figcaption class="code-toolbar"><span>Texto</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-estructura" aria-label="Copiar código de Texto" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código Texto"><code id="codigo-estructura">mi-proyecto/
+├── index.html
+├── styles.css
+└── script.js</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p><code>index.html</code> será el punto de entrada. <code>styles.css</code> guardará las reglas visuales y <code>script.js</code>, la interacción. No necesitas instalar un framework, crear una cuenta ni usar un sistema de compilación para este ejemplo.</p><p>Comprueba que tu editor no haya añadido una extensión oculta: <code>styles.css.txt</code> no es el mismo nombre que <code>styles.css</code>. Mantén los tres archivos en la misma carpeta durante este primer ejercicio.</p><p>Una ruta relativa se interpreta desde el archivo que hace la referencia. Como aquí HTML, CSS y JS están juntos, basta escribir el nombre de cada archivo. Más adelante, si mueves CSS a una carpeta <code>css</code>, el enlace desde HTML deberá usar <code>css/styles.css</code>.</p></section>
+<section aria-labelledby="conectar-css"><h2 id="conectar-css">Cómo conectar CSS con HTML</h2><p>Dentro de <code>&lt;head&gt;</code>, añade esta línea. El head contiene información y referencias de la página; no es donde escribes los párrafos que leerá una persona.</p><figure class="code-block"><figcaption class="code-toolbar"><span>HTML</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-enlace-css" aria-label="Copiar código de HTML" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código HTML"><code id="codigo-enlace-css">&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p><code>rel="stylesheet"</code> identifica el recurso como hoja de estilos y <code>href="styles.css"</code> indica dónde está. El navegador solicita ese archivo y aplica sus reglas al HTML. La etiqueta <code>link</code> no necesita etiqueta de cierre.</p><p>El nombre del archivo no activa los estilos por sí solo: tiene que coincidir con la ruta de <code>href</code>. Si escribiste <code>estilos.css</code> al guardarlo, cambia el enlace o renombra el archivo. No copies CSS dentro de la etiqueta; el contenido de la hoja va en <code>styles.css</code>.</p><p>Para comprobar esta conexión, empieza con un cambio fácil de reconocer, como el fondo. Si el fondo cambia al recargar, ya tienes una señal concreta de que la hoja está llegando a la página.</p></section>
+<section aria-labelledby="conectar-javascript"><h2 id="conectar-javascript">Cómo conectar JavaScript con HTML</h2><p>En el mismo <code>&lt;head&gt;</code>, enlaza el archivo JavaScript. A diferencia de <code>link</code>, <code>script</code> sí lleva cierre, incluso cuando su contenido está en otro archivo.</p><figure class="code-block"><figcaption class="code-toolbar"><span>HTML</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-enlace-js" aria-label="Copiar código de HTML" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código HTML"><code id="codigo-enlace-js">&lt;script src=&quot;script.js&quot; defer&gt;&lt;/script&gt;</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p><code>src</code> apunta al archivo. Para un script externo clásico, <code>defer</code> permite descargarlo mientras el navegador sigue interpretando HTML y lo ejecuta después de terminar ese análisis. Así el botón ya existe cuando nuestro código lo busca. Además, los scripts clásicos con <code>defer</code> respetan el orden en que aparecen.</p><p>Sin <code>defer</code>, un script clásico en el head detiene el análisis de HTML mientras se descarga y ejecuta. Si busca un botón situado más abajo, puede encontrar <code>null</code>, porque el navegador todavía no ha creado ese elemento.</p><h3>¿Y si lo pongo al final del body?</h3><p>También puedes colocar el script justo antes de <code>&lt;/body&gt;</code>:</p><figure class="code-block"><figcaption class="code-toolbar"><span>HTML</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-js-final" aria-label="Copiar código de HTML" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código HTML"><code id="codigo-js-final">  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p>En ese punto, los elementos anteriores ya se han interpretado. Es una alternativa válida; para este ejercicio usaremos head con <code>defer</code>. El atributo no hace que un script escrito dentro de la etiqueta se vuelva diferido; aquí se utiliza junto con <code>src</code>. Los scripts con <code>type="module"</code> se difieren por defecto, pero nuestro ejemplo no necesita módulos.</p><p>Estos comportamientos se describen en la <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script">referencia del elemento script de MDN</a>.</p></section>
+<section aria-labelledby="ejemplo-completo"><h2 id="ejemplo-completo">Ejemplo completo: un botón que saluda</h2><p>Ahora completa los tres archivos. Copia cada bloque en el archivo que indica su encabezado. No pegues las etiquetas <code>&lt;script&gt;</code> dentro de <code>script.js</code>, ni las etiquetas <code>&lt;style&gt;</code> dentro de <code>styles.css</code>.</p><h3>1. El contenido de index.html</h3><figure class="code-block"><figcaption class="code-toolbar"><span>HTML · index.html</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-html-completo" aria-label="Copiar código de index.html" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código HTML · index.html"><code id="codigo-html-completo">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es-MX&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Mi primera página&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+  &lt;script src=&quot;script.js&quot; defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main&gt;
+    &lt;h1&gt;Hola, mundo&lt;/h1&gt;
+    &lt;p&gt;Esta página conecta tres archivos.&lt;/p&gt;
+    &lt;button id=&quot;saludar&quot; type=&quot;button&quot;&gt;Saludar&lt;/button&gt;
+    &lt;p id=&quot;mensaje&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p>El <code>lang="es-MX"</code> indica el idioma del documento, <code>charset</code> permite interpretar caracteres como tildes y signos, y <code>viewport</code> ayuda a mostrar la página correctamente en pantallas móviles. El título del head aparece en la pestaña; el <code>h1</code> está dentro de la página.</p><p>Los identificadores <code>saludar</code> y <code>mensaje</code> permiten localizar dos elementos concretos. El párrafo empieza vacío porque recibirá el saludo. Su <code>role="status"</code> ayuda a anunciar ese cambio sin mover el foco.</p><h3>2. La presentación en styles.css</h3><figure class="code-block"><figcaption class="code-toolbar"><span>CSS · styles.css</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-css-completo" aria-label="Copiar código de styles.css" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código CSS · styles.css"><code id="codigo-css-completo">body {
+  font-family: sans-serif;
+  background: #eae8ff;
+  color: #2d3142;
+  margin: 0;
+  padding: 24px;
+}
+
+main {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+button {
+  background: #2d3142;
+  color: #ffffff;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 3px solid #2d3142;
+  outline-offset: 4px;
+}</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p>Cada regla tiene un selector, como <code>body</code> o <code>button</code>, y propiedades entre llaves. El fondo permite comprobar que CSS está conectado. El estilo de foco mantiene visible qué control estás usando al navegar con Tab.</p><h3>3. La interacción en script.js</h3><figure class="code-block"><figcaption class="code-toolbar"><span>JavaScript · script.js</span><button type="button" class="button button--ghost code-copy" data-copy-code="codigo-js-completo" aria-label="Copiar código de script.js" hidden>Copiar</button></figcaption><pre tabindex="0" aria-label="Código JavaScript · script.js"><code id="codigo-js-completo">const button = document.querySelector(&quot;#saludar&quot;);
+const message = document.querySelector(&quot;#mensaje&quot;);
+
+button.addEventListener(&quot;click&quot;, () =&gt; {
+  message.textContent = &quot;¡HTML, CSS y JavaScript están conectados!&quot;;
+});</code></pre><p class="code-status" role="status" aria-live="polite"></p></figure><p><code>document.querySelector</code> busca un elemento del documento. El símbolo <code>#</code> significa que buscamos por ID: <code>#saludar</code> corresponde al botón con <code>id="saludar"</code>.</p><p><code>addEventListener</code> registra una acción para el evento <code>click</code>. La función escrita como <code>() =&gt; { ... }</code> se ejecuta cuando ocurre ese evento, no al registrarse. Dentro, <code>textContent</code> cambia el texto del párrafo seleccionado. No hace falta recargar para ver el saludo.</p><p>El botón seguirá siendo un botón aunque JS esté desactivado; lo que dependerá del script será actualizar el mensaje. Esta diferencia ayuda a distinguir contenido de comportamiento.</p></section>
+<section aria-labelledby="comprobar-conexion"><h2 id="comprobar-conexion">Cómo comprobar que todo funciona</h2><ol><li>Guarda los tres archivos. Los cambios sin guardar no llegan al navegador.</li><li>Abre <code>index.html</code> en el navegador. Este ejemplo no utiliza módulos ni fetch, así que puedes probarlo directamente como archivo local.</li><li>Comprueba que aparecen el título y el botón: esa es la estructura HTML.</li><li>Busca el fondo lavanda y el botón oscuro: son señales de CSS.</li><li>Haz clic en Saludar y revisa que aparece el mensaje: esa es la interacción de JavaScript.</li><li>Recarga después de cambiar un archivo y vuelve a probar.</li></ol><p>También puedes servir la carpeta con <code>python -m http.server 8000</code> si ya tienes Python y abrir la dirección local que indica el servidor. El blog Bitácora Stack sí usa módulos y catálogos JSON, por lo que conviene ejecutarlo con servidor local, como explica su <a href="../../README.md">README</a>.</p><p>Si algo falla, abre las herramientas de desarrollo del navegador y revisa Console y Network. Una petición fallida a <code>styles.css</code> o <code>script.js</code> apunta a una ruta; un error dentro del script apunta a su código. Verifica una conexión a la vez.</p></section>
+<section aria-labelledby="errores-comunes"><h2 id="errores-comunes">Errores comunes y cómo encontrarlos</h2><ul><li><strong>Nombre o ruta distintos.</strong> <code>styles.css</code> y <code>style.css</code> son archivos diferentes. Comprueba cada letra, extensión y carpeta.</li><li><strong>Mayúsculas inconsistentes.</strong> Una ruta que parece funcionar en tu equipo puede fallar en un servidor que distinga mayúsculas. Usa nombres en minúsculas y enlaces que coincidan exactamente.</li><li><strong>Un ID que no coincide.</strong> Buscar <code>#saludo</code> no encuentra <code>id="saludar"</code>. Compara el selector con el HTML.</li><li><strong>JS ejecutado demasiado pronto.</strong> Si el elemento es <code>null</code>, revisa su ID y la posición o carga del script antes de cambiar toda la lógica.</li><li><strong>Archivos sin guardar o versión anterior.</strong> Guarda, recarga y comprueba en Network qué archivo recibió el navegador.</li></ul><aside class="callout callout--error" aria-label="Error común"><p class="callout-label">Error común</p><p>Escribir correctamente el nombre del archivo pero utilizar una ruta equivocada. Si CSS está dentro de otra carpeta, el enlace debe indicar esa carpeta desde la ubicación del HTML.</p></aside><p>No añadas una barra inicial por costumbre: <code>/styles.css</code> busca desde la raíz del sitio, mientras que <code>styles.css</code> parte de la carpeta actual. En un proyecto alojado dentro de un repositorio esa diferencia puede romper la conexión.</p></section>
+<section aria-labelledby="pruebalo-tu-mismo"><h2 id="pruebalo-tu-mismo">Pruébalo tú mismo</h2><aside class="callout callout--exercise" aria-label="Pruébalo tú mismo"><p class="callout-label">Pruébalo tú mismo</p><ol><li>Cambia el título visible desde HTML.</li><li>Cambia el fondo desde CSS, conservando texto legible.</li><li>Cambia el saludo desde JavaScript.</li><li>Mueve <code>styles.css</code> a una carpeta <code>css</code> y corrige el <code>href</code>.</li></ol><p>Antes de recargar, predice qué debería cambiar. Después comprueba si ocurrió. Si un cambio falla, revisa primero el archivo responsable y su conexión.</p></aside><p>Como comprobación adicional, navega hasta Saludar con Tab y actívalo con Enter o Espacio. Debes poder utilizar el ejemplo sin depender del mouse.</p></section>
+<section aria-labelledby="lo-que-debes-recordar"><h2 id="lo-que-debes-recordar">Lo que debes recordar</h2><aside class="callout callout--remember" aria-label="Lo que debes recordar"><p class="callout-label">Lo que debes recordar</p><ul><li>HTML organiza el contenido y le da significado.</li><li>CSS presenta ese contenido; no depende de JavaScript.</li><li>JavaScript responde a eventos y modifica la página.</li><li><code>href</code> enlaza CSS y <code>src</code> enlaza el script externo.</li><li>Las rutas se interpretan desde el archivo que referencia el recurso.</li><li>Para este ejemplo, un script externo con <code>defer</code> evita buscar elementos antes de que existan.</li></ul></aside><p>Con estas tres conexiones funcionando tienes una base pequeña, pero completa. El siguiente paso no es añadir muchas herramientas: es hacer un cambio concreto en cada archivo y entender su efecto.</p></section></div></div>
+<footer class="article-end"><h2>Seguir aprendiendo</h2><p>Explora los <a href="../">recursos de Desarrollo Web y Móvil</a> o vuelve al <a href="../../articulos/">listado de artículos</a>.</p><div class="share-actions" data-share-controls hidden><button class="button button--secondary" type="button" data-share>Compartir artículo</button><button class="button button--ghost" type="button" data-copy-link>Copiar enlace</button><p data-share-status role="status"></p></div><h3>Referencias técnicas</h3><p>Consulta la documentación de <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link">link para hojas de estilo</a> y <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script">script y el atributo defer</a> en MDN.</p></footer>
+</article>
+<section class="section" data-related-articles hidden aria-labelledby="relacionados-titulo"><h2 id="relacionados-titulo">Artículos relacionados</h2><div class="grid" data-related-results></div></section>
+</div></main>
+<footer class="site-footer"><div class="container footer-layout"><div><a class="brand" href="../../">Bitácora Stack</a><p>Tecnología explicada desde la práctica.</p><small>© 2026 Christian Alfredo Rincon De La Cruz</small></div><nav class="footer-nav" aria-label="Navegación del pie"><a href="../../articulos/">Artículos</a><a href="../../guias/">Guías</a><a href="../../proyectos/">Proyectos</a><a href="../../acerca/">Acerca</a></nav></div></footer>
+<dialog class="search-dialog" id="busqueda-global" aria-labelledby="busqueda-titulo"><div class="dialog-heading"><h2 id="busqueda-titulo">¿Qué quieres aprender?</h2><button class="button button--ghost" type="button" data-search-close>Cerrar</button></div><label class="field-label" for="busqueda-input">Buscar artículos</label><input id="busqueda-input" type="search" placeholder="Tema, lenguaje o concepto" autocomplete="off"><p class="result-count" data-search-count role="status" aria-live="polite"></p><div data-search-results class="grid"></div></dialog>
+</body></html>

@@ -1,0 +1,106 @@
+[
+  {
+    "id": "web-conectar-html-css-javascript",
+    "slug": "conectar-html-css-javascript",
+    "path": "desarrollo/conectar-html-css-javascript/",
+    "title": "Cómo conectar HTML, CSS y JavaScript paso a paso",
+    "description": "Aprende a conectar HTML, CSS y JavaScript con rutas relativas, defer y un ejemplo funcional. Organiza tus archivos y comprueba errores frecuentes paso a paso.",
+    "category": "desarrollo",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "desarrollo web",
+      "principiantes"
+    ],
+    "cluster": "fundamentos-web",
+    "difficulty": "principiante",
+    "author": "Christian Alfredo Rincon De La Cruz",
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "readingTime": 8,
+    "featured": true,
+    "image": {
+      "src": "assets/images/articles/conectar-html-css-javascript.svg",
+      "alt": "Tres bloques conceptuales conectados: HTML para estructura, CSS para presentación y JavaScript para comportamiento."
+    }
+  },
+  {
+    "id": "web-html-semantico",
+    "slug": "html-semantico",
+    "path": "desarrollo/html-semantico/",
+    "title": "HTML semántico: qué es y qué etiquetas utilizar",
+    "description": "Aprende qué es HTML semántico y cuándo usar header, nav, main, section y article. Organiza una página accesible con encabezados y un ejemplo completo.",
+    "category": "desarrollo",
+    "tags": [
+      "HTML",
+      "HTML semántico",
+      "accesibilidad",
+      "desarrollo web",
+      "SEO"
+    ],
+    "cluster": "fundamentos-web",
+    "difficulty": "principiante",
+    "author": "Christian Alfredo Rincon De La Cruz",
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "readingTime": 8,
+    "featured": true,
+    "image": {
+      "src": "assets/images/articles/html-semantico.svg",
+      "alt": "Diagrama conceptual de HTML semántico: header y nav, main con article y section, aside y footer."
+    }
+  },
+  {
+    "id": "web-flexbox-css",
+    "slug": "flexbox-css",
+    "path": "desarrollo/flexbox-css/",
+    "title": "Flexbox CSS explicado con ejemplos",
+    "description": "Aprende Flexbox con ejes, alineación, gap, wrap y flex. Construye tarjetas adaptables con HTML y CSS y entiende cuándo combinar este modelo con Grid.",
+    "category": "desarrollo",
+    "tags": [
+      "CSS",
+      "Flexbox",
+      "layout",
+      "frontend",
+      "desarrollo web"
+    ],
+    "cluster": "fundamentos-web",
+    "difficulty": "principiante",
+    "author": "Christian Alfredo Rincon De La Cruz",
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "readingTime": 8,
+    "featured": true,
+    "image": {
+      "src": "assets/images/articles/flexbox-css.svg",
+      "alt": "Tres bloques distribuidos en una fila con el eje principal horizontal, el transversal vertical y separación entre items."
+    }
+  },
+  {
+    "id": "web-dom-javascript",
+    "slug": "dom-javascript",
+    "path": "desarrollo/dom-javascript/",
+    "title": "DOM de JavaScript explicado desde cero",
+    "description": "Descubre qué es el DOM y aprende a seleccionar elementos, cambiar texto, clases y atributos y responder a eventos con un ejemplo sencillo de JavaScript.",
+    "category": "desarrollo",
+    "tags": [
+      "JavaScript",
+      "DOM",
+      "frontend",
+      "eventos",
+      "desarrollo web"
+    ],
+    "cluster": "fundamentos-web",
+    "difficulty": "principiante",
+    "author": "Christian Alfredo Rincon De La Cruz",
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "readingTime": 8,
+    "featured": true,
+    "image": {
+      "src": "assets/images/articles/dom-javascript.svg",
+      "alt": "Árbol conceptual del DOM: document contiene main y este contiene un encabezado h1 y un botón."
+    }
+  }
+]

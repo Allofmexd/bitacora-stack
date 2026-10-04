@@ -1,0 +1,26 @@
+[
+  {
+    "id": "codetrainer",
+    "slug": "codetrainer",
+    "path": "proyectos/codetrainer/",
+    "title": "CodeTrainer",
+    "description": "Aplicación móvil orientada a estudiantes que desean practicar programación, recibir retroalimentación y seguir su progreso.",
+    "status": "en-desarrollo",
+    "technologies": [
+      "Kotlin",
+      "Android"
+    ],
+    "topics": [
+      "desarrollo móvil",
+      "programación",
+      "software educativo"
+    ],
+    "featured": true,
+    "image": {
+      "src": "assets/images/projects/codetrainer.svg",
+      "alt": "Composición conceptual de Kotlin, Android y persistencia local para CodeTrainer; no es una captura de la aplicación."
+    },
+    "repository": null,
+    "relatedArticleIds": []
+  }
+]

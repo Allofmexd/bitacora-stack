@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect width="800" height="450" fill="#2d3142"/>
+<g fill="none" stroke="#b0d7ff" stroke-width="2"><path d="M190 150h150v80h110v80h150"/><circle cx="190" cy="150" r="6"/><circle cx="600" cy="310" r="6"/></g>
+<rect x="95" y="80" width="260" height="95" rx="16" fill="#eae8ff"/>
+<rect x="265" y="195" width="260" height="95" rx="16" fill="#b0d7ff"/>
+<rect x="440" y="310" width="260" height="75" rx="16" fill="#d8d5db"/>
+<g fill="#2d3142" font-family="system-ui,sans-serif" text-anchor="middle"><text x="225" y="139" font-size="27">Kotlin</text><text x="395" y="253" font-size="27">Android</text><text x="570" y="356" font-size="20">Persistencia local</text></g>
+<text x="95" y="405" fill="#ffffff" font-family="system-ui,sans-serif" font-size="13" letter-spacing="3">CODETRAINER · CONCEPTO</text>
+</svg>
