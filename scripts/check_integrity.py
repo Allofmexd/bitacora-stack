@@ -5,6 +5,7 @@ from urllib.parse import urlsplit, unquote
 from datetime import date
 import json
 import re
+import xml.etree.ElementTree as ET
 from article_metrics import measure
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -140,6 +141,30 @@ def check():
         titles.add(title); descriptions.add(desc)
         if site["siteUrl"] is None:
             require(not any(tag == "link" and a.get("rel") == "canonical" for tag, a in page.tags), "Canonical sin URL real")
+        else:
+            canonical = [a.get("href") for tag, a in page.tags if tag == "link" and a.get("rel") == "canonical"]
+            og_url = [a.get("content") for tag, a in page.tags if tag == "meta" and a.get("property") == "og:url"]
+            if path.name == "404.html":
+                require(page.base == site["siteUrl"], "Base pública de 404 incorrecta")
+                require(not canonical and not og_url, "La 404 no debe indexarse como contenido")
+                require(any(tag == "meta" and a.get("name") == "robots" and a.get("content") == "noindex" for tag, a in page.tags), "404 sin noindex")
+            else:
+                route = path.relative_to(ROOT).as_posix().removesuffix("index.html")
+                public_url = site["siteUrl"] + route
+                require(canonical == [public_url] and og_url == [public_url], "URL SEO incorrecta: " + route)
+                if is_article:
+                    record = next(a for a in catalogs["articles"] if a["path"] == route)
+                    structured = [json.loads(value) for value in re.findall(r'<script type="application/ld\+json">(.*?)</script>', raw, re.S)]
+                    posts = [item for item in structured if item.get("@type") == "BlogPosting"]
+                    crumbs = [item for item in structured if item.get("@type") == "BreadcrumbList"]
+                    require(len(posts) == len(crumbs) == 1, "Datos estructurados incompletos")
+                    post = posts[0]
+                    require(post.get("url") == public_url and post.get("mainEntityOfPage", {}).get("@id") == public_url, "URL BlogPosting incorrecta")
+                    require(post.get("headline") == record["title"] and post.get("description") == record["description"] and post.get("author", {}).get("name") == AUTHOR, "Metadata BlogPosting divergente")
+                    require(all(post.get(key) == record[key] for key in ("datePublished", "dateModified")), "Fechas BlogPosting divergentes")
+                    items = crumbs[0].get("itemListElement", [])
+                    require([item.get("item") for item in items] == [site["siteUrl"], site["siteUrl"] + record["category"] + "/", public_url], "BreadcrumbList incorrecto")
+                    require([item.get("position") for item in items] == [1, 2, 3], "Orden BreadcrumbList incorrecto")
         for link in page.links:
             parts = urlsplit(link)
             if parts.scheme or parts.netloc:
@@ -153,6 +178,19 @@ def check():
             require(target.is_file(), str(path.relative_to(ROOT)) + ": enlace roto " + link)
             if parts.fragment and target.suffix == ".html":
                 require(re.search(r'id=[\"\']' + re.escape(parts.fragment) + r'[\"\']', target.read_text(encoding="utf-8")), "Ancla inexistente: " + link)
+    if site["siteUrl"] is not None:
+        ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        sitemap = ET.parse(ROOT / "sitemap.xml").getroot()
+        entries = sitemap.findall("s:url", ns)
+        locations = [entry.findtext("s:loc", namespaces=ns) for entry in entries]
+        expected_urls = {site["siteUrl"] + path.relative_to(ROOT).as_posix().removesuffix("index.html") for path in pages if path.name == "index.html"}
+        require(len(locations) == len(set(locations)) and set(locations) == expected_urls, "Inventario sitemap incorrecto")
+        modified = {entry.findtext("s:loc", namespaces=ns): entry.findtext("s:lastmod", namespaces=ns) for entry in entries}
+        require(all(modified[site["siteUrl"] + a["path"]] == a["dateModified"] for a in catalogs["articles"]), "lastmod desincronizado")
+        robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
+        require("User-agent: *" in robots and "Allow: /" in robots and "Disallow:" not in robots, "Robots impide crawling")
+        require("Sitemap: " + site["siteUrl"] + "sitemap.xml" in robots, "Sitemap de robots incorrecto")
+        require((ROOT / ".nojekyll").is_file() and (ROOT / ".nojekyll").stat().st_size == 0, ".nojekyll debe estar vacío")
     for path in ROOT.rglob("*"):
         if not path.is_file() or ".git" in path.parts or "__pycache__" in path.parts:
             continue

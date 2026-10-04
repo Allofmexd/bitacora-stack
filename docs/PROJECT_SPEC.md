@@ -1605,8 +1605,8 @@ Solo permanecen pendientes externos o de producción futura; no reabrir contrato
 
 | Pendiente | Tratamiento establecido |
 | --- | --- |
-| URL definitiva de GitHub Pages | `siteUrl: null` hasta conocerla; resolver antes del despliegue y de URLs absolutas finales. |
-| Repositorio definitivo | No inventar remoto, propietario de cuenta ni nombre de repositorio. Elegir configuración de publicación al conocerlo. |
+| URL definitiva de GitHub Pages — resuelta | `https://allofmexd.github.io/bitacora-stack/`; `siteUrl` operativo coincide con esa raíz HTTPS y slash final. |
+| Repositorio definitivo — resuelto | Público: `https://github.com/Allofmexd/bitacora-stack`; remoto `origin`, rama `main`. |
 | Validación final de nombre e identidad/dominio | Bitácora Stack sigue siendo nombre operativo y no bloquea desarrollo. |
 | Logo final | Mantener concepto de tres capas y wordmark; producir después. |
 | Favicon e iconos finales | Incorporar activos reales al manifest en fase posterior. |
@@ -1682,3 +1682,15 @@ El destacado filtra `featured: true`, ordena por `datePublished` descendente y d
 Los enlaces contextuales viven en la prosa HTML y usan textos descriptivos que explican el recurso destino. Se añaden cuando una explicación se beneficia de otro contenido real del cluster; no se fuerza una relación solo para conectar todas las páginas. Las rutas relativas conservan su validez bajo un prefijo de repositorio y sin JavaScript.
 
 Relacionados se calculan desde el catálogo: excluir el ID actual y duplicados, priorizar mismo cluster, después categoría y coincidencias de tags normalizados. Empates por fecha descendente e ID ascendente. Mostrar hasta tres candidatos con alguna relación; mantener la sección oculta si no hay candidatos. No almacenar listas paralelas de relacionados en cada HTML.
+
+## Configuración de producción — GitHub Pages
+
+Repositorio público `Allofmexd/bitacora-stack`, raíz pública `https://allofmexd.github.io/bitacora-stack/`. Publicación directa desde rama `main`, carpeta `/`, con `.nojekyll` vacío; sin framework, bundler, Jekyll ni workflow personalizado. Esta configuración concreta sustituye los valores locales pendientes de las fases anteriores.
+
+`assets/data/site.json` fija `siteUrl` a esa raíz. Cada una de las 16 páginas indexables tiene canonical HTTPS propio y `og:url` coincidente, escritos en HTML. Los cuatro artículos completan BlogPosting con `url` y `mainEntityOfPage` y añaden BreadcrumbList Inicio → Desarrollo Web y Móvil → artículo. Los títulos, descriptions, autoría y fechas editoriales se conservan.
+
+`sitemap.xml` enumera únicamente las 16 páginas indexables existentes; excluye 404 y usa lastmod real para artículos. `robots.txt` permite crawling y referencia el sitemap absoluto. Covers SVG siguen siendo recursos visuales; una imagen social raster adecuada continúa pendiente. No generar og:image ni campos de organización/logo sin activos reales.
+
+La base de producción de `404.html` es la raíz pública absoluta y funciona sin JS desde rutas inexistentes de cualquier profundidad. Un script ejecutado antes de las hojas de estilo adapta esa base únicamente en localhost/127.0.0.1/IPv6 loopback al origen local y a raíz o al mismo prefijo público, según la ruta servida. Para prefijos locales alternativos o para probar sin JS en localhost, el servidor de prueba sustituye la base de la respuesta. No cambia las rutas relativas del resto del sitio ni infiere el repositorio contando segmentos arbitrarios.
+
+La primera publicación conserva la pila Montserrat con fallback del sistema, evitando nuevas dependencias externas y descargas. Montserrat definitiva, logo/favicon/iconos, manifest con activos reales, OG raster, GA4 y Search Console permanecen pendientes. No se crea CNAME ni se amplía el contenido editorial en esta fase.

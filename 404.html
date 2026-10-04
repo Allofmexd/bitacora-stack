@@ -2,8 +2,20 @@
 <html lang="es-MX" data-site-root="./">
 <head>
 <meta charset="UTF-8">
-<!-- Base local de prueba: sustituir por siteUrl real antes del despliegue. -->
-<base href="http://localhost:8000/">
+<!-- Base pública explícita: también funciona en rutas inexistentes profundas. -->
+<base href="https://allofmexd.github.io/bitacora-stack/">
+<script>
+// En localhost, adaptar solo la base de desarrollo antes de cargar recursos.
+if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
+  const baseElement = document.querySelector('base');
+  const configuredBase = new URL(baseElement.href);
+  if (configuredBase.origin !== location.origin) {
+    const localPath = location.pathname.startsWith(configuredBase.pathname)
+      ? configuredBase.pathname : '/';
+    baseElement.href = location.origin + localPath;
+  }
+}
+</script>
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Página no encontrada | Bitácora Stack</title>
