@@ -26,5 +26,5 @@ export async function initFilters() {
   } catch {
     count.textContent = 'No se pudo cargar el catálogo.';
     results.replaceChildren(emptyState('El catálogo no está disponible en este momento.', 'Puedes seguir explorando las categorías. Intenta recargar la página.'));
-  } finally { results.removeAttribute('aria-busy'); }
+  } finally { browser.classList.add('filters-settled'); results.removeAttribute('aria-busy'); }
 }

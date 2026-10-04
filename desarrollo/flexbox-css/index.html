@@ -6,6 +6,17 @@
 <title>Flexbox CSS explicado con ejemplos | Bitácora Stack</title>
 <meta name="description" content="Aprende Flexbox con ejes, alineación, gap, wrap y flex. Construye tarjetas adaptables con HTML y CSS y entiende cuándo combinar este modelo con Grid.">
 <meta name="theme-color" content="#eae8ff">
+<script>
+// Preparar el espacio de las mejoras antes del primer renderizado.
+document.documentElement.classList.add('js');
+window.addEventListener('load', () => {
+  if (!document.querySelector('[data-navigation].enhanced')) {
+    document.documentElement.classList.remove('js');
+  }
+});
+</script>
+<link rel="icon" href="data:,">
+
 <link rel="stylesheet" href="../../assets/css/tokens.css">
 <link rel="stylesheet" href="../../assets/css/base.css">
 <link rel="stylesheet" href="../../assets/css/layout.css">
@@ -69,7 +80,7 @@
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<header class="site-header"><div class="container navbar" data-navigation><a class="brand" href="../../" aria-label="Bitácora Stack, inicio"><span class="stack-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span>BITÁCORA<small>STACK</small></span></a>
+<header class="site-header"><div class="container navbar" data-navigation><a class="brand" href="../../" aria-label="Bitácora Stack, inicio"><span class="stack-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span>BITÁCORA <small>STACK</small></span></a>
 <button class="button button--ghost menu-toggle" type="button" aria-expanded="false" aria-controls="navegacion">Menú</button>
 <nav class="nav-links" id="navegacion" aria-label="Navegación principal"><a href="../../articulos/">Artículos</a><a href="../../guias/">Guías</a><a href="../../proyectos/">Proyectos</a><a href="../../acerca/">Acerca</a><button class="button button--ghost" type="button" data-search-open hidden>Buscar <span aria-hidden="true">↗</span></button></nav></div></header>
 <div class="reading-progress" data-reading-progress aria-hidden="true" hidden><span></span></div>

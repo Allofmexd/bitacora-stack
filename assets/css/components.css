@@ -55,3 +55,10 @@ input::placeholder { color: var(--color-primary); opacity: .75; }
 .site-footer small { font-size: var(--text-xs); }
 .site-footer :focus-visible, .button--primary:focus-visible { outline-color: var(--color-accent); box-shadow: 0 0 0 2px var(--color-primary); }
 @media (hover: hover) { .category-card:hover { transform: translateY(-3px); } .button:hover { box-shadow: var(--shadow); } .button--primary:hover { background: #41475e; } .button--secondary:hover { background: #c5e2ff; } }
+
+/* Reservar solo el espacio de controles que se inicializan con JavaScript. */
+html.js [data-search-open][hidden] { display: inline-flex !important; visibility: hidden; }
+html.js [data-article-browser]:not(.filters-settled) [data-filter-controls][hidden] { display: block !important; visibility: hidden; }
+@media (max-width: 767px) {
+  html.js .navbar:not(.enhanced) .nav-links { display: none; }
+}
